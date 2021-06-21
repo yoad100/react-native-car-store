@@ -19,12 +19,12 @@ Where we offer `only` high end cars `;)`
 ![categoryPage](https://github.com/yoad100/react-native-car-store/blob/master/screenshots/categoryPage.JPG)
 
 - Product Page - display of a particular product data, enables the user to add the product to his/her cart, allow the user to comment on the product
-- 
+
 ![productPage](https://github.com/yoad100/react-native-car-store/blob/master/screenshots/productPage.JPG)
   <img src="./screenshots/productPage.jpg"/>
 
 - Comment being entered
-- 
+ 
 ![youCanAddComments](https://github.com/yoad100/react-native-car-store/blob/master/screenshots/youCanAddComments.JPG)
 
 - Comment added to our product page
@@ -32,11 +32,11 @@ Where we offer `only` high end cars `;)`
 ![commentAdded](https://github.com/yoad100/react-native-car-store/blob/master/screenshots/commentAdded.JPG)
 
 - Using Modal we Inform our user the product he/she selected was added to their cart
--
+
 ![modalAfterAddToCart](https://github.com/yoad100/react-native-car-store/blob/master/screenshots/modalAfterAddToCart.JPG)
 
 - The Shopping cart screen - presenting an itemised list
--
+
 ![cart](https://github.com/yoad100/react-native-car-store/blob/master/screenshots/cart.JPG)
 
 - Payment Form - all the data in the form is `required programatically` and all data entered is `validated`
