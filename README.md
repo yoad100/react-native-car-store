@@ -12,41 +12,38 @@ Where we offer `only` high end cars `;)`
 
 - The home screen - presenting all categories of products our store offers
 
-<img src="./screenshots/homePage.jpg"/>
+![homePage](https://github.com/yoad100/react-native-car-store/blob/master/screenshots/homePage.JPG)
 
 - The Category Page - presenting all items in a specific category
 
-  <img src="./screenshots/categoryPage.jpg"/>
+![categoryPage](https://github.com/yoad100/react-native-car-store/blob/master/screenshots/categoryPage.JPG)
 
 - Product Page - display of a particular product data, enables the user to add the product to his/her cart, allow the user to comment on the product
-
+- 
+![productPage](https://github.com/yoad100/react-native-car-store/blob/master/screenshots/productPage.JPG)
   <img src="./screenshots/productPage.jpg"/>
 
 - Comment being entered
-
-  <img src="./screenshots/youCanAddComments.jpg"/>
+- 
+![youCanAddComments](https://github.com/yoad100/react-native-car-store/blob/master/screenshots/youCanAddComments.JPG)
 
 - Comment added to our product page
-
-  <img src="./screenshots/commentAdded.jpg"/>
+ 
+![commentAdded](https://github.com/yoad100/react-native-car-store/blob/master/screenshots/commentAdded.JPG)
 
 - Using Modal we Inform our user the product he/she selected was added to their cart
-
-![cart](https://github.com/yoad100/react-native-car-store/blob/master/screenshots/cart.JPG)
-
-  <img src="./screenshots/modalAfterAddToCart.jpg"/>
+-
+![modalAfterAddToCart](https://github.com/yoad100/react-native-car-store/blob/master/screenshots/modalAfterAddToCart.JPG)
 
 - The Shopping cart screen - presenting an itemised list
-
-<img src="./screenshots/cart.jpg"/>
+-
+![cart](https://github.com/yoad100/react-native-car-store/blob/master/screenshots/cart.JPG)
 
 - Payment Form - all the data in the form is `required programatically` and all data entered is `validated`
-
-  <img src="./screenshots/paymentForm.jpg"/>
+![paymentForm](https://github.com/yoad100/react-native-car-store/blob/master/screenshots/paymentForm.JPG)
 
 - Order done! - after order is finished our users are present with the oppertunity to click and continue buying :)
-
-  <img src="./screenshots/endOfPurchase.jpg"/>
+![endOfPurchase](https://github.com/yoad100/react-native-car-store/blob/master/screenshots/endOfPurchase.JPG)
 
 > note: we used `Global Context` as our source of data globally throughout our app
 
