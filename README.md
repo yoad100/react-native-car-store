@@ -6,9 +6,9 @@ Where we offer `only` high end cars `;)`
 
 ## presented by
 
-### Yoad Gadot - 314966193
+### Yoad Gadot
 
-### Rachel Schwartz - 200563823
+### Rachel Schwartz
 
 - The home screen - presenting all categories of products our store offers
 
