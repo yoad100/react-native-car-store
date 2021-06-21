@@ -1,27 +1,26 @@
-import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import React from "react";
+import { View, Text, StyleSheet, Button } from "react-native";
 
-const OrderMessage = () => {
-	return (
-		<View>
-			<Text style={styles.content}>Your order is on its way !</Text>
-			<View style={styles.btnContainer}>
-				<Button title={"Back to the shop"}/>
-			</View>
-		</View>
-	)
-}
+const OrderMessage = ({ navigation }) => {
+  return (
+    <View>
+      <Text style={styles.content}>Your order is on its way !</Text>
+      <View style={styles.btnContainer}>
+        <Button
+          title={"Back to the shop"}
+          onPress={() => {
+            navigation.navigate("Shop");
+          }}
+        />
+      </View>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
-	container:{
+  container: {},
+  content: {},
+  btnContainer: {},
+});
 
-	},
-	content:{
-
-	},
-	btnContainer:{
-
-	}
-})
-
-export default OrderMessage
+export default OrderMessage;
