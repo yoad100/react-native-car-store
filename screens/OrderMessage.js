@@ -9,7 +9,7 @@ const OrderMessage = ({ navigation }) => {
         <Button
           title={"Back to the shop"}
           onPress={() => {
-            navigation.navigate("Shop");
+            navigation.navigate("HomePage");
           }}
         />
       </View>
