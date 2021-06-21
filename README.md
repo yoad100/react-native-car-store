@@ -32,6 +32,8 @@ Where we offer `only` high end cars `;)`
 
 - Using Modal we Inform our user the product he/she selected was added to their cart
 
+caet(https://github.com/yoad100/react-native-car-store/blob/master/screenshots/cart.JPG)
+
   <img src="./screenshots/modalAfterAddToCart.jpg"/>
 
 - The Shopping cart screen - presenting an itemised list
