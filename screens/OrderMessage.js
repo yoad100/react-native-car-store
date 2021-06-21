@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from "react";
 import { View, Text, StyleSheet, Button } from "react-native";
-
+import { NavigationActions, StackActions } from 'react-navigation';
 const OrderMessage = ({ navigation }) => {
 
 	
@@ -11,10 +11,14 @@ const OrderMessage = ({ navigation }) => {
         <Button
           title={"Back to the shop"}
           onPress={() => {
-			navigation.reset({
+			const resetAction = StackActions.reset({
 				index:0,
-				routes: [{name:'Cart'},{name:'Payment'},{name:'OrderMessage'} ]
+				actions: [NavigationActions.navigate({ routeName: 'Cart' }),
+				NavigationActions.navigate({ routeName: 'Payment' }),
+				NavigationActions.navigate({ routeName: 'OrderMessage' })		
+			],
 			})
+			navigation.dispatch(resetAction)
             navigation.navigate("HomePage");
           }}
         />
