@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { View, Text, TextInput, StyleSheet, ScrollView } from "react-native";
 import { DataContext } from "../data/DataContextProvider";
 import COLORS from "../assets/constants/colors";
@@ -6,6 +6,9 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 const PaymentForm = ({ navigation }) => {
+  const [transactionData, setTransactionData] = useState({});
+  const [date, setDate] = useState(new Date());
+
   const handleSubmit = () => {
     navigation.navigate("OrderMessage");
   };
@@ -15,41 +18,37 @@ const PaymentForm = ({ navigation }) => {
       <View style={styles.formRow}>
         <TextInput
           style={[styles.inputStyle, styles.rowInputStyle]}
-          type
           placeholder={"Please Enter First Name"}
         />
         <TextInput
           style={[styles.inputStyle, styles.rowInputStyle]}
-          required
           placeholder={"Please Enter Last Name"}
         />
       </View>
       <TextInput
         style={[styles.inputStyle, styles.inputStyleRegular]}
-        required
+        keyboardType="email-address"
         placeholder={"Please Enter Email"}
       />
       <TextInput
         style={[styles.inputStyle, styles.inputStyleRegular]}
-        required
+        keyboardType="numeric"
         placeholder={"Please Enter Cellphone Number"}
       />
       <View style={styles.formRow}>
         <TextInput
           style={[styles.inputStyle, styles.rowInputStyle]}
-          required
           placeholder={"Please Enter State"}
         />
         <TextInput
           style={[styles.inputStyle, styles.rowInputStyle]}
-          required
           placeholder={"Please Enter City"}
         />
       </View>
       <TextInput
         style={[styles.inputStyle, styles.inputStyleRegular]}
         required
-        placeholder={"Please Enter Address"}
+        placeholder={"Please Enter Street Address"}
       />
       <Text style={styles.title}>Payment details:</Text>
       <TextInput
@@ -59,23 +58,22 @@ const PaymentForm = ({ navigation }) => {
       />
       <TextInput
         style={[styles.inputStyle, styles.inputStyleRegular]}
-        required
+        keyboardType="numeric"
         placeholder={"Please Enter Id"}
       />
       <TextInput
         style={[styles.inputStyle, styles.inputStyleRegular]}
-        required
+        keyboardType="numeric"
         placeholder={"Please Enter Card Number"}
       />
       <View style={styles.formRow}>
         <TextInput
           style={[styles.inputStyle, styles.rowInputStyle]}
-          required
           placeholder={"Please Enter Valid Until"}
         />
         <TextInput
           style={[styles.inputStyle, styles.rowInputStyle]}
-          required
+          keyboardType="numeric"
           placeholder={"Please Enter CVV"}
         />
       </View>
