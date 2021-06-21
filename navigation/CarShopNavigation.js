@@ -1,5 +1,3 @@
-// import:
-import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import { Platform } from "react-native";
 import { Entypo } from "@expo/vector-icons";
@@ -38,7 +36,6 @@ const ShoppingCart = createBottomTabNavigator(
     Shop: {
       screen: ShopNavigator,
       navigationOptions: {
-        // define icon: tabBarIcon is a function that receives tabBar info:
         tabBarIcon: (tabInfo) => {
           return <Entypo name="shop" size={24} color={COLORS.iconColor} />;
         },
@@ -63,9 +60,7 @@ const ShoppingCart = createBottomTabNavigator(
       ),
 
       navigationOptions: {
-        // text:
         tabBarLabel: "Cart",
-        // define icon:
         tabBarIcon: (tabInfo) => {
           return (
             <AntDesign name="shoppingcart" size={24} color={COLORS.iconColor} />
@@ -80,6 +75,5 @@ const ShoppingCart = createBottomTabNavigator(
     },
   }
 );
-//export default createAppContainer(ShopNavigator);
-// return this instead - leads also to the stack navigator.
+
 export default createAppContainer(ShoppingCart);
