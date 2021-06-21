@@ -1,4 +1,4 @@
-# React Native Course - end project
+# React Native Course - End Project
 
 # Our Car Store
 
@@ -41,6 +41,9 @@ Where we offer `only` high end cars `;)`
 - Payment Form - all the data in the form is `required programatically` and all data entered is `validated`
 
   <img src="./screenshots/paymentForm.jpg"/>
+
+- Modal of Validation Form - lists all invalid or missing data on the form, is updated once the data is updated ofcourse
+  <img src="./screenshots/formValidationModal.jpg"/>
 
 - Order done! - after order is finished our users are present with the oppertunity to click and continue buying :)
 

@@ -128,7 +128,9 @@ const Cart = ({ navigation }) => {
       <View style={styles.purchaseContainer}>
         <TouchableOpacity
           style={styles.couponBtn}
-          onPress={() => navigation.navigate("Payment")}
+          onPress={() =>
+            shoppingCart.length > 0 && navigation.navigate("Payment")
+          }
         >
           <Text style={styles.couponText}>Purchase</Text>
         </TouchableOpacity>
