@@ -1,8 +1,9 @@
-import React from "react";
+import React,{useContext} from "react";
 import { View, Text, StyleSheet, ImageBackground,TouchableOpacity } from "react-native";
 import COLORS from "../assets/constants/colors";
-
+import {DataContext} from '../data/DataContextProvider'
 const ProductCard = ({onSelect, imgUrl, title, price }) => {
+	const {numberWithCommas}  = useContext(DataContext)
 	return (
 		<TouchableOpacity onPress={onSelect} style={styles.container}>
 			<View style={styles.cardContainer}>
@@ -12,7 +13,7 @@ const ProductCard = ({onSelect, imgUrl, title, price }) => {
 					source={{ uri: imgUrl }}>
 					<View style={styles.productTitle}>
 						<Text style={styles.titleContent}>{title}</Text>
-						<Text style={styles.titleContent}>{price}$</Text>
+						<Text style={styles.titleContent}>{numberWithCommas(price)}$</Text>
 					</View>
 				</ImageBackground>
 			</View>	
@@ -46,6 +47,9 @@ const styles = StyleSheet.create({
 		shadowRadius: 10,
 		shadowOpacity: 1,
 		padding: 10,
+	},
+	productTitle:{
+		backgroundColor:'rgba(0, 0, 0, 0.5)',
 	}
 });
 export default ProductCard;

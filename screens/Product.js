@@ -20,7 +20,7 @@ import COLORS from "../assets/constants/colors";
 
 const Product = ({ navigation }) => {
 	const [modalVisible, setModalVisible] = useState(false);
-	const { cars, setChosenCar, setShoppingCart } = useContext(DataContext);
+	const { cars, setChosenCar, setShoppingCart, numberWithCommas } = useContext(DataContext);
 	const [comment, setComment] = useState("");
 	const [newCommentId, setNewCommentId] = useState(null);
 	const inputRef = useRef(0);
@@ -30,6 +30,7 @@ const Product = ({ navigation }) => {
 	);
 	Product.navigationOptions = (navigationData) => {
 		const carName = navigationData.navigation.getParam("carName");
+		console.log(carName);
 		return {
 			headerTitle: carName,
 		};
@@ -99,7 +100,7 @@ const Product = ({ navigation }) => {
 									:
 								</Text>
 								<Text style={styles.infoContent}>
-									{key=="final_price"?car[key]+"$":car[key]}
+									{key=="final_price"?numberWithCommas(car[key])+"$":car[key]}
 								</Text>
 							</View>
 						);
@@ -180,12 +181,15 @@ const styles = StyleSheet.create({
 		fontSize: 30,
 		fontFamily: "titleFont",
 	},
+	productTitle:{
+		backgroundColor:'rgba(0,0,0,0.5)'
+	},
 	infoContainer: {
 		flex: 1,
 		width: "90%",
 	},
 	infoContent: {
-		fontSize: 22,
+		fontSize: 18,
 		fontFamily: "contentFont",
 		textAlign: "center",
 	},

@@ -10,6 +10,6 @@ export default class Car{
 		this.category = category;
 		this.comments = []
 	}
-
+	 
 
 }

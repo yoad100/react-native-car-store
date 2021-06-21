@@ -1,18 +1,16 @@
 import React, { useEffect } from "react";
-import { View, Text, StyleSheet, Button } from "react-native";
+import { View, Text, StyleSheet, Button, TouchableOpacity } from "react-native";
 import COLORS from "../assets/constants/colors";
 import Category from "../screens/Category";
 
 const CategoryCard = (props) => {
 
 	return (
-		<Button
-			onPress={
-				props.onSelect
-			}
-			style={styles.container}
-			title={props.name}
-		/>
+		<TouchableOpacity onPress={props.onSelect}>
+			<View style={styles.container}>
+
+			</View>
+		</TouchableOpacity>
 	);
 };
 
