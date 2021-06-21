@@ -1,5 +1,13 @@
 import React, { useContext, useState } from "react";
-import { View, Text, TextInput, StyleSheet, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  ScrollView,
+  Modal,
+  Pressable,
+} from "react-native";
 import { DataContext } from "../data/DataContextProvider";
 import COLORS from "../assets/constants/colors";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -7,111 +15,147 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 
 const PaymentForm = ({ navigation }) => {
   const [transactionData, setTransactionData] = useState({});
+  const [modalVisible, setModalVisible] = useState(false);
 
   const handleOnChange = (text, name) => {
     setTransactionData((prev) => {
       return { ...prev, [name]: text };
     });
-    let emailValidation = /^w+[+.w-]*@([w-]+.)*w+[w-]*.([a-z]{2,4}|d+)$/i;
-
-    console.log(emailValidation.test(transactionData.email));
 
     console.log(transactionData);
   };
 
+  const [message, setMessage] = useState("");
   const handleSubmit = () => {
+    let canMoveOn = true;
+    setMessage("");
     let userNameValidation = /^[A-Za-z]+$/;
+    let addressesValidation = /^[A-Za-z ]+$/;
+    let emailValidation = /^w+[+.w-]*@([w-]+.)*w+[w-]*.([a-z]{2,4}|d+)$/i;
+
     if (
       !transactionData.firstName ||
       transactionData.firstName.length < 2 ||
       !userNameValidation.test(transactionData.firstName)
     ) {
-      console.log("bad data first name");
+      setMessage((prev) => prev + "\ninvalid first name, please try again");
+      canMoveOn = false;
+      console.log("bad data first name" + transactionData.firstName);
     }
     if (
       !transactionData.lastName ||
       transactionData.lastName.length < 2 ||
       !userNameValidation.test(transactionData.lastName)
     ) {
+      setMessage((prev) => prev + "\ninvalid last name, please try again");
+      canMoveOn = false;
       console.log("bad data last name");
     }
-    if (
-      !transactionData.email ||
-      userNameValidation.test(transactionData.email)
-    ) {
+    if (!transactionData.email || emailValidation.test(transactionData.email)) {
+      setMessage((prev) => prev + "\ninvalid email, please try again");
+      canMoveOn = false;
       console.log("bad data email");
     }
     if (
       !transactionData.phonenumber ||
       transactionData.phonenumber.length < 9
     ) {
+      setMessage((prev) => prev + "\ninvalid phonenumber, please try again");
+      canMoveOn = false;
       console.log("bad data phonenumber");
     }
     if (
       !transactionData.state ||
       transactionData.state.length < 3 ||
-      !userNameValidation.test(transactionData.state)
+      !addressesValidation.test(transactionData.state)
     ) {
+      setMessage((prev) => prev + "\ninvalid state, please try again");
+      canMoveOn = false;
       console.log("bad data state");
     }
     if (
       !transactionData.city ||
       transactionData.city.length < 3 ||
-      !userNameValidation.test(transactionData.city)
+      !addressesValidation.test(transactionData.city)
     ) {
+      setMessage((prev) => prev + "\ninvalid city name, please try again");
+      canMoveOn = false;
       console.log("bad data city");
     }
-    if (
-      !transactionData.address ||
-      transactionData.address.length < 3 ||
-      !userNameValidation.test(transactionData.address)
-    ) {
+    if (!transactionData.address || transactionData.address.length < 3) {
+      setMessage((prev) => prev + "\ninvalid address, please try again");
+      canMoveOn = false;
       console.log("bad data address");
     }
     if (
       !transactionData.ownerName ||
       transactionData.ownerName.length < 2 ||
-      !userNameValidation.test(transactionData.ownerName)
+      !addressesValidation.test(transactionData.ownerName)
     ) {
+      setMessage((prev) => prev + "\ninvalid owner name, please try again");
+      canMoveOn = false;
       console.log("bad data owner name");
     }
     if (!transactionData.ownerId || transactionData.ownerId.length !== 9) {
+      setMessage((prev) => prev + "\ninvalid id, please try again");
+      canMoveOn = false;
       console.log("bad data owner id");
     }
     if (
       !transactionData.cardNumber ||
       transactionData.cardNumber.length !== 12
     ) {
+      setMessage((prev) => prev + "\ninvalid card number, please try again");
+      canMoveOn = false;
       console.log("bad data card number");
     }
     if (
       !transactionData.day ||
-      !isNaN(parseInt(transactionData.day)) ||
-      !(parseInt(transactionData.day) > 0 && parseInt(transactionData.day) < 32)
+      isNaN(parseInt(transactionData.day)) ||
+      parseInt(transactionData.day) < 1 ||
+      parseInt(transactionData.day) > 31
     ) {
+      setMessage((prev) => prev + "\ninvalid day, please try again");
+      canMoveOn = false;
       console.log("bad data day");
     }
     if (
       !transactionData.month ||
-      !isNaN(parseInt(transactionData.month)) ||
-      !(
-        parseInt(transactionData.month) > 0 &&
-        parseInt(transactionData.month) < 12
-      )
+      isNaN(parseInt(transactionData.month)) ||
+      parseInt(transactionData.month) < 1 ||
+      parseInt(transactionData.month) > 12
     ) {
+      setMessage((prev) => prev + "\ninvalid month, please try again");
+      canMoveOn = false;
       console.log("bad data month");
     }
     if (
       !transactionData.year ||
-      !isNaN(parseInt(transactionData.year)) ||
-      !parseInt(transactionData.year) > 2020
+      isNaN(parseInt(transactionData.year)) ||
+      parseInt(transactionData.year) < 2021
     ) {
+      setMessage((prev) => prev + "\ninvalid year, please try again");
+      canMoveOn = false;
       console.log("bad data year");
     }
+    if (
+      new Date(
+        transactionData.year,
+        parseInt(transactionData.month) - 1,
+        transactionData.day
+      ) < Date.now()
+    ) {
+      setMessage((prev) => prev + "\ninvalid date, card not valid anymore");
+      canMoveOn = false;
+    }
+
     if (!transactionData.cvv || transactionData.cvv.length !== 3) {
+      setMessage((prev) => prev + "\ninvalid cvv, please try again");
+      canMoveOn = false;
       console.log("bad data cvv");
     }
-    navigation.navigate("OrderMessage");
+    if (canMoveOn) navigation.navigate("OrderMessage");
+    else setModalVisible(true);
   };
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -207,6 +251,27 @@ const PaymentForm = ({ navigation }) => {
         <Text style={styles.paymentText}>Submit</Text>
         <MaterialIcons name="payment" size={24} color={COLORS.secondary} />
       </TouchableOpacity>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          Alert.alert("Modal has been closed.");
+          setModalVisible(false);
+        }}
+      >
+        <View style={Modalstyles.centeredView}>
+          <View style={Modalstyles.modalView}>
+            <Text style={Modalstyles.modalText}>{message}</Text>
+            <Pressable
+              style={[Modalstyles.button, Modalstyles.buttonClose]}
+              onPress={() => setModalVisible(false)}
+            >
+              <Text style={Modalstyles.textStyle}>close</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
     </ScrollView>
   );
 };
@@ -276,6 +341,47 @@ const styles = StyleSheet.create({
   },
   cvv: {
     width: "38%",
+  },
+});
+
+const Modalstyles = StyleSheet.create({
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22,
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+  },
+  buttonClose: {
+    backgroundColor: COLORS.primary,
+  },
+  textStyle: {
+    color: COLORS.secondary,
+    fontFamily: "boldContentFont",
+    textAlign: "center",
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center",
   },
 });
 
