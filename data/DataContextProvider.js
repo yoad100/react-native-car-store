@@ -2,6 +2,7 @@ import React, { createContext, useState } from "react";
 import Car from "../schemas/Car";
 import CategoryScheme from "../schemas/CategoryScheme";
 import CommentCar from "../schemas/CommentCar";
+import Coupon from "../schemas/Coupon";
 
 export const DataContext = createContext();
 
@@ -22,9 +23,9 @@ const DataContextProvider = (props) => {
 			"Very good car ",
 			3799,
 			711,
-			700,
+			17000,
 			"Nissan",
-			15000
+			895000
 		),
 		new Car(
 			"https://www.kvishim.co.il/wp-content/uploads/images-001/Nissan-370Z_Nismo-2015.jpg",
@@ -338,29 +339,36 @@ const DataContextProvider = (props) => {
 		new CategoryScheme(
 			"Porsche",
 			filterCars(cars, "Porsche"),
-			"https://w7.pngwing.com/pngs/182/469/png-transparent-porsche-911-car-porsche-panamera-porsche-cayenne-porsche.png"
+			"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxNhn1coJ9wJqc6VtCx769ATm5mQGEc_DUZA&usqp=CAU"
 		),
 		new CategoryScheme(
 			"Tesla",
 			filterCars(cars,"Tesla"),
-			"https://e7.pngegg.com/pngimages/354/373/png-clipart-tesla-tesla.png"
+			"https://i.pinimg.com/originals/b0/46/8c/b0468c61baa72515ada2838c236466e8.jpg"
 		),
 		new CategoryScheme(
 			"BMW",
 			filterCars(cars,"BMW"),
-			"https://spng.pngfind.com/pngs/s/29-297842_bmw-bmw-text-logo-png-transparent-png.png"
+			"https://brandslogo.net/wp-content/uploads/2015/09/bmw-flat-logo-vector-download.jpg"
 		),
 		new CategoryScheme(
 			"Lamborghini",
 			filterCars(cars,"Lamborghini"),
-			"https://image.pngaaa.com/538/35538-middle.png"
+			"https://upload.wikimedia.org/wikipedia/en/thumb/d/df/Lamborghini_Logo.svg/1200px-Lamborghini_Logo.svg.png"
 		),
 		new CategoryScheme(
 			"Audi",
 			filterCars(cars,"Audi"),
-			"https://toppng.com/uploads/preview/audi-logo-1154874010955h7lwhggt.png"
+			"https://i.pinimg.com/originals/e2/bb/3e/e2bb3ec0ada2e382f0d499c6f7499d29.jpg"
 		),
 	];
+
+	const coupons = [
+		new Coupon("123", 15),
+		new Coupon("yoadCar", 20),
+		new Coupon("rachelCar", 5),
+	  ];
+	
 
 	cars.forEach((car) => {
 		car.comments = [
@@ -374,36 +382,7 @@ const DataContextProvider = (props) => {
 				"Yoad gadot",
 				"What a noice vehicle to ride at the dame morning"
 			),
-			new CommentCar(
-				"https://media.fashionnetwork.com/cdn-cgi/image/fit=contain,width=1000,height=1000/m/0d2f/313d/73c9/143a/6875/d46e/d976/bb81/2b1d/b017/b017.jpg",
-				"Yoad gadot",
-				"What a noice vehicle to ride at the dame morning"
-			),
-			new CommentCar(
-				"https://media.fashionnetwork.com/cdn-cgi/image/fit=contain,width=1000,height=1000/m/0d2f/313d/73c9/143a/6875/d46e/d976/bb81/2b1d/b017/b017.jpg",
-				"Yoad gadot",
-				"What a noice vehicle to ride at the dame morning"
-			),
-			new CommentCar(
-				"https://media.fashionnetwork.com/cdn-cgi/image/fit=contain,width=1000,height=1000/m/0d2f/313d/73c9/143a/6875/d46e/d976/bb81/2b1d/b017/b017.jpg",
-				"Yoad gadot",
-				"What a noice vehicle to ride at the dame morning"
-			),
-			new CommentCar(
-				"https://media.fashionnetwork.com/cdn-cgi/image/fit=contain,width=1000,height=1000/m/0d2f/313d/73c9/143a/6875/d46e/d976/bb81/2b1d/b017/b017.jpg",
-				"Yoad gadot",
-				"What a noice vehicle to ride at the dame morning"
-			),
-			new CommentCar(
-				"https://media.fashionnetwork.com/cdn-cgi/image/fit=contain,width=1000,height=1000/m/0d2f/313d/73c9/143a/6875/d46e/d976/bb81/2b1d/b017/b017.jpg",
-				"Yoad gadot",
-				"What a noice vehicle to ride at the dame morning"
-			),
-			new CommentCar(
-				"https://media.fashionnetwork.com/cdn-cgi/image/fit=contain,width=1000,height=1000/m/0d2f/313d/73c9/143a/6875/d46e/d976/bb81/2b1d/b017/b017.jpg",
-				"Yoad gadot",
-				"What a noice vehicle to ride at the dame morning"
-			),
+			
 		];
 	});
 
@@ -417,6 +396,7 @@ const DataContextProvider = (props) => {
 				shoppingCart,
 				setShoppingCart,
 				numberWithCommas,
+				coupons
 			}}>
 			{props.children}
 		</DataContext.Provider>

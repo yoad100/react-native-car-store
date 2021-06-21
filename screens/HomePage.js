@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet,ScrollView } from "react-native";
 import { DataContext } from "../data/DataContextProvider";
 import CategoryCard from "../components/CategoryCard";
 import Category from "./Category";
@@ -8,7 +8,7 @@ const HomePage = (props) => {
   const { categories } = useContext(DataContext);
 
   return (
-    <View>
+    <ScrollView>
       {categories.map((category, index) => (
         <CategoryCard
           key={index}
@@ -23,11 +23,12 @@ const HomePage = (props) => {
           }
           name={category.name}
           cars={category.cars}
+		  imgUrl={category.imgUrl}
           navigation={props.navigation}
           route={props.route}
         />
       ))}
-    </View>
+    </ScrollView>
   );
 };
 

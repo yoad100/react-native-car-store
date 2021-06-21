@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, ScrollView } from "react-native";
 import ProductCard from "../components/ProductCard";
-
+import COLORS from '../assets/constants/colors'
 const Category = ({ navigation }) => {
 	const cars = navigation.getParam("categoryCars");
 	Category.navigationOptions = (navigationData) => {
@@ -9,6 +9,7 @@ const Category = ({ navigation }) => {
 
 		return {
 			headerTitle: categoryName,
+			 headerRight:()=><Text style={{fontSize:18,fontFamily:'boldContentFont',marginRight:10,color:COLORS.secondary}}>{cars.length} Items</Text>
 		};
 	};
 

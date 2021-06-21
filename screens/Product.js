@@ -10,17 +10,19 @@ import {
 	TouchableOpacity,
 	Button,
 	Modal,
-	Pressable
+	Pressable,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import Comment from "../components/Comment";
 import CommentCar from "../schemas/CommentCar";
 import { DataContext } from "../data/DataContextProvider";
 import COLORS from "../assets/constants/colors";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const Product = ({ navigation }) => {
 	const [modalVisible, setModalVisible] = useState(false);
-	const { cars, setChosenCar, setShoppingCart, numberWithCommas } = useContext(DataContext);
+	const { cars, setChosenCar, setShoppingCart, numberWithCommas } =
+		useContext(DataContext);
 	const [comment, setComment] = useState("");
 	const [newCommentId, setNewCommentId] = useState(null);
 	const inputRef = useRef(0);
@@ -76,15 +78,22 @@ const Product = ({ navigation }) => {
 				</View>
 			</ImageBackground>
 			<View style={styles.infoContainer}>
-				<View style={styles.buyButton}>
-					<Button
-						onPress={() => {
-							setShoppingCart((prev) => [...prev, car]);
-							setModalVisible(true);
-						}}
-						color={COLORS.primary}
-						title={"Add to cart"}
-					/>
+				<View style={styles.btnContainer}>
+					<TouchableOpacity
+					onPress={() => {
+						setShoppingCart((prev) => [...prev, car]);
+						setModalVisible(true);
+					}}
+						style={styles.addToCart}>
+						<Text style={styles.addText}>Add to cart</Text>
+						<MaterialCommunityIcons
+
+								name="shopping-outline"
+								size={24}
+								color={COLORS.secondary}
+							/>
+					</TouchableOpacity>
+					
 				</View>
 				<ScrollView style={styles.descriptionScroll}>
 					<Text style={styles.infoContent}>{car.paragraph}</Text>
@@ -100,7 +109,9 @@ const Product = ({ navigation }) => {
 									:
 								</Text>
 								<Text style={styles.infoContent}>
-									{key=="final_price"?numberWithCommas(car[key])+"$":car[key]}
+									{key == "final_price"
+										? numberWithCommas(car[key]) + "$"
+										: car[key]}
 								</Text>
 							</View>
 						);
@@ -144,21 +155,20 @@ const Product = ({ navigation }) => {
 				}}>
 				<View style={Modalstyles.centeredView}>
 					<View style={Modalstyles.modalView}>
-						<Text style={Modalstyles.modalText}>Your car has been added to your shopping cart</Text>
+						<Text style={Modalstyles.modalText}>
+							Your car has been added to your shopping cart
+						</Text>
 						<Pressable
 							style={[
 								Modalstyles.button,
 								Modalstyles.buttonClose,
 							]}
 							onPress={() => setModalVisible(!modalVisible)}>
-							<Text style={Modalstyles.textStyle}>
-								close
-							</Text>
+							<Text style={Modalstyles.textStyle}>close</Text>
 						</Pressable>
 					</View>
 				</View>
 			</Modal>
-			
 		</View>
 	);
 };
@@ -181,8 +191,8 @@ const styles = StyleSheet.create({
 		fontSize: 30,
 		fontFamily: "titleFont",
 	},
-	productTitle:{
-		backgroundColor:'rgba(0,0,0,0.5)'
+	productTitle: {
+		backgroundColor: "rgba(0,0,0,0.5)",
 	},
 	infoContainer: {
 		flex: 1,
@@ -229,10 +239,26 @@ const styles = StyleSheet.create({
 	descriptionScroll: {
 		height: 200,
 	},
-	buyButton: {
+	btnContainer: {
 		alignSelf: "center",
 		width: 1000,
 	},
+	addToCart: {
+		width: "100%",
+		marginBottom: 20,
+		marginTop: 10,
+		backgroundColor: COLORS.primary,
+		padding: 10,
+		flexDirection: "row",
+		borderRadius: 5,
+		justifyContent:'center'
+	  },
+	addText:{
+		fontSize:18,
+		fontFamily:'contentFont',
+		color:COLORS.secondary,
+		marginRight:10
+	}
 });
 
 const Modalstyles = StyleSheet.create({
@@ -266,8 +292,8 @@ const Modalstyles = StyleSheet.create({
 		backgroundColor: COLORS.primary,
 	},
 	textStyle: {
-		color:  COLORS.secondary,
-		fontFamily:'boldContentFont',
+		color: COLORS.secondary,
+		fontFamily: "boldContentFont",
 		textAlign: "center",
 	},
 	modalText: {
