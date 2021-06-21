@@ -154,8 +154,9 @@ const PaymentForm = ({ navigation }) => {
       canMoveOn = false;
       console.log("bad data cvv");
     }
-    if (canMoveOn) navigation.navigate("OrderMessage");
-    else setModalVisible(true);
+    // if (canMoveOn) navigation.navigate("OrderMessage");
+    // else setModalVisible(true);
+	navigation.navigate("OrderMessage");
   };
   return (
     <ScrollView contentContainerStyle={styles.container}>
