@@ -21,7 +21,6 @@ Where we offer `only` high end cars `;)`
 - Product Page - display of a particular product data, enables the user to add the product to his/her cart, allow the user to comment on the product
 
 ![productPage](https://github.com/yoad100/react-native-car-store/blob/master/screenshots/productPage.JPG)
-  <img src="./screenshots/productPage.jpg"/>
 
 - Comment being entered
  
