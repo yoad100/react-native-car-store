@@ -42,7 +42,8 @@ Where we offer `only` high end cars `;)`
 ![paymentForm](https://github.com/yoad100/react-native-car-store/blob/master/screenshots/paymentForm.JPG)
 
 - Modal of Validation Form - lists all invalid or missing data on the form, is updated once the data is updated ofcourse
-  <img src="./screenshots/formValidationModal.jpg"/>
+![formValidationModal](https://github.com/yoad100/react-native-car-store/blob/master/screenshots/formValidationModal.JPG
+)
 
 - Order done! - after order is finished our users are present with the oppertunity to click and continue buying :)
 ![endOfPurchase](https://github.com/yoad100/react-native-car-store/blob/master/screenshots/endOfPurchase.JPG)
